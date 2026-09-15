@@ -1,0 +1,23 @@
+{
+  "name": "timestamp-converter",
+  "version": "1.0.0",
+  "description": "A full-stack timestamp converter application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "build": "npm install && npm --prefix client install && npm --prefix client run build",
+    "client:build": "npm --prefix client run build -- --watch",
+    "dev": "concurrently \"npm run server\" \"npm run client:build\""
+  },
+  "author": "Satyam Patel",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4",
+    "nodemon": "^3.1.14"
+  }
+}
