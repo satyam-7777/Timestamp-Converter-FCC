@@ -107,6 +107,16 @@ body {
   padding: 10px 20px;
 }
 
+.submit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-clear:hover {
+  background-color: #c62828;
+  border-color: #c62828;
+  color: white;
+}
+
 .result-section {
   padding: 30px 20px;
 }

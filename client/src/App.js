@@ -44,6 +44,7 @@ function TimestampSection({ result, error, setResult, setError }) {
     e.preventDefault();
 
     try {
+      setResult(null);
       const response = await fetch(`/api/${encodeURIComponent(timestamp)}`);
 
       const data = await response.json();
@@ -75,7 +76,7 @@ function TimestampSection({ result, error, setResult, setError }) {
             onChange={handleOnChange}
           />
           <div className="btn-container">
-            <button type="submit" className="btn">
+            <button type="submit" className="btn submit-btn">
               Convert
             </button>
             {(result || error) && (
