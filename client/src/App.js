@@ -4,12 +4,20 @@ import { getResultItems } from "./utils/resultFields";
 export default function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="App">
       <NavBar />
       <main className="main-container">
-        <TimestampSection result={result} error={error} setResult={setResult} setError={setError} />
+        <TimestampSection
+          result={result}
+          error={error}
+          setResult={setResult}
+          setError={setError}
+          setLoading={setLoading}
+          loading={loading}
+        />
         <ResultSection result={result} error={error} />
       </main>
     </div>
@@ -25,18 +33,20 @@ function NavBar() {
   );
 }
 
-function TimestampSection({ result, error, setResult, setError }) {
+function TimestampSection({ result, error, setResult, setError, setLoading, loading }) {
   const [timestamp, setTimestamp] = useState("");
 
   function handleOnChange(e) {
     setError(null);
     setResult(null);
+    setLoading(false);
     setTimestamp(e.target.value);
   }
 
   function handleClear() {
     setResult(null);
     setError(null);
+    setLoading(false);
     setTimestamp("");
   }
 
@@ -45,6 +55,7 @@ function TimestampSection({ result, error, setResult, setError }) {
 
     try {
       setResult(null);
+      setLoading(true);
       const response = await fetch(`/api/${encodeURIComponent(timestamp)}`);
 
       const data = await response.json();
@@ -56,6 +67,8 @@ function TimestampSection({ result, error, setResult, setError }) {
       setResult(data);
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -78,7 +91,7 @@ function TimestampSection({ result, error, setResult, setError }) {
           />
           <div className="btn-container">
             <button type="submit" className="btn submit-btn">
-              Convert
+              {loading ? "Converting..." : "Convert"}
             </button>
             {(result || error) && (
               <button type="button" className="btn btn-clear" onClick={handleClear}>
