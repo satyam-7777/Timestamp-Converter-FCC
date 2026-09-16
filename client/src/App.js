@@ -74,6 +74,7 @@ function TimestampSection({ result, error, setResult, setError }) {
             placeholder="Enter date or Unix timestamp"
             value={timestamp}
             onChange={handleOnChange}
+            required
           />
           <div className="btn-container">
             <button type="submit" className="btn submit-btn">
