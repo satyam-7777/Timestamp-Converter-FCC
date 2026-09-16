@@ -17,7 +17,7 @@ app.use("/api", timestampRouter);
 app.all("/*splat", (req, res) => {
   res.status(404).json({
     status: "failed",
-    message: `This ${req.originalUrl} route is not available on the server.`,
+    message: `This ${req.method} ${req.originalUrl} route is not available on the server.`,
   });
 });
 

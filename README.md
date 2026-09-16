@@ -29,11 +29,6 @@ The application accepts a date or Unix timestamp and converts it into multiple u
 - Node.js
 - Express
 
-### Development Tools
-
-- Nodemon
-- Concurrently
-
 ## How to Run
 
 ### 1. Clone the repository
@@ -61,15 +56,14 @@ npm --prefix client install
 npm run dev
 ```
 
-This starts both the React development server and the Express backend.
+The Express server will serve both the React frontend and the API.
 
-- React frontend: `http://localhost:3000`
 - Express backend: `http://localhost:8000`
 
 Open the React frontend:
 
 ```text
-http://localhost:3000
+http://localhost:8000
 ```
 
 ### 5. Build the application for production
